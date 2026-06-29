@@ -132,7 +132,7 @@ async def scan_polymarket(now: datetime, min_minutes: int, max_minutes: int, ass
         try:
             payload = await _fetch_json_with_retries(client, POLYMARKET_ENDPOINT, params={"active": "true", "limit": 100})
         except Exception as exc:
-            logger.warning("Polymarket scan failed: %r", exc, exc_info=True)
+            logger.warning("Polymarket scan failed: %r", exc, exc_info=logger.isEnabledFor(logging.DEBUG))
             return opportunities
 
     items = payload if isinstance(payload, list) else payload.get("data") or payload.get("markets") or []
@@ -186,10 +186,10 @@ async def scan_kalshi(now: datetime, min_minutes: int, max_minutes: int, assets:
                     exc.response.status_code,
                 )
                 return opportunities
-            logger.warning("Kalshi scan failed: %r", exc, exc_info=True)
+            logger.warning("Kalshi scan failed: %r", exc, exc_info=logger.isEnabledFor(logging.DEBUG))
             return opportunities
         except Exception as exc:
-            logger.warning("Kalshi scan failed: %r", exc, exc_info=True)
+            logger.warning("Kalshi scan failed: %r", exc, exc_info=logger.isEnabledFor(logging.DEBUG))
             return opportunities
 
     items = payload if isinstance(payload, list) else payload.get("markets") or payload.get("data") or []
