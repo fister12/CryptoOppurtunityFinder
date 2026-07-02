@@ -18,7 +18,7 @@ from agents import DataEngineerAgent, EvaluatorAgent, MarketScoutAgent, QuantAge
 from agents.base import AgentContext
 from core.hermes_runtime import OpenRouterHermesClient, ToolRegistry, create_llm_client
 from core.ledger import LedgerStore
-from utils.kronos_inference import KronosInferenceEngine
+from trading_utils.kronos_inference import KronosInferenceEngine
 
 logger = logging.getLogger("crypto_trader")
 

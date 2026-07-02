@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from agents.base import AgentContext, BaseAgent
-from utils.apify_client import ApifyOHLCVClient
+from trading_utils.apify_client import ApifyOHLCVClient
 
 
 class DataEngineerAgent(BaseAgent):
